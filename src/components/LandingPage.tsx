@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Book, Users, FileText, Settings } from 'lucide-react';
 import { HandbookPage } from '../types/handbook';
+import { Footer } from './Footer';
 
 interface LandingPageProps {
   pages: HandbookPage[];
@@ -17,16 +18,20 @@ export function LandingPage({ pages, onPageSelect, onAddPage }: LandingPageProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
-              Hotel Handbook
-              <span className="block text-primary">Manager</span>
+              Nova Hotels X
+              <span className="block text-primary">Staff Handbook</span>
             </h1>
             
-            <p className="text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
-              Professional staff training and reference guide system
+            <p className="text-xl text-muted-foreground mb-2 max-w-2xl mx-auto">
+              Unofficial training and reference guide system
             </p>
             
-            <p className="text-lg text-primary font-medium mb-12">
+            <p className="text-lg text-primary font-medium mb-2">
               Created by Azuliano
+            </p>
+            
+            <p className="text-sm text-muted-foreground mb-12 italic">
+              *This is an unofficial tool and is not affiliated with or endorsed by Nova Hotels X
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -56,10 +61,10 @@ export function LandingPage({ pages, onPageSelect, onAddPage }: LandingPageProps
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-foreground mb-4">
-            Everything you need for staff training
+            Everything you need for Nova Hotels X staff training
           </h2>
           <p className="text-lg text-muted-foreground">
-            Organize, manage, and access your hotel's operational procedures
+            Organize, manage, and access Nova Hotels X operational procedures
           </p>
         </div>
 
@@ -129,6 +134,8 @@ export function LandingPage({ pages, onPageSelect, onAddPage }: LandingPageProps
           </div>
         </div>
       )}
+      
+      <Footer />
     </div>
   );
 }

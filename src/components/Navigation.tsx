@@ -22,8 +22,11 @@ export function Navigation({ pages, currentPageId, onPageSelect, onAddPage, onRe
               onClick={() => onPageSelect(null)}
               className="text-xl font-bold text-primary hover:text-primary-hover transition-colors"
             >
-              Hotel Handbook
+              Nova Hotels X
             </button>
+            <span className="ml-2 text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
+              Unofficial
+            </span>
           </div>
 
           {/* Navigation Links */}

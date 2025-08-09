@@ -85,6 +85,19 @@ const Index = () => {
           setIsAddingPage(false);
         }}
       />
+      
+      {/* Footer disclaimer for inner pages */}
+      {currentPageId !== null && (
+        <div className="bg-card border-t border-border mt-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="text-center">
+              <p className="text-xs text-muted-foreground">
+                Nova Hotels X Staff Handbook - Created by Azuliano | This is an unofficial tool not affiliated with Nova Hotels X
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

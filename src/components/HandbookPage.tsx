@@ -87,7 +87,7 @@ export function HandbookPage({
               No categories yet
             </h3>
             <p className="text-muted-foreground mb-6">
-              Create your first category to start organizing your handbook content
+              Create your first category to start organizing Nova Hotels X procedures and training content
             </p>
             <Button
               onClick={() => setIsAddingCategory(true)}

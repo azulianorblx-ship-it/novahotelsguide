@@ -4,17 +4,39 @@ import { HandbookData, HandbookPage, Category, TextEntry } from '../types/handbo
 const DEFAULT_DATA: HandbookData = {
   pages: [
     {
-      id: 'general-handbook',
-      name: 'General Handbook',
+      id: 'nova-policies',
+      name: 'Nova Hotels X Policies',
       categories: [
         {
-          id: 'reception',
-          name: 'Reception',
+          id: 'front-desk',
+          name: 'Front Desk Operations',
           entries: [
             {
               id: 'welcome-greeting',
-              title: 'Welcome Greeting',
-              content: 'Good [morning/afternoon/evening], welcome to our hotel! How may I assist you today?',
+              title: 'Nova Welcome Greeting',
+              content: 'Good [morning/afternoon/evening], welcome to Nova Hotels X! My name is [Your Name], how may I provide you with exceptional service today?',
+              createdAt: new Date(),
+              updatedAt: new Date()
+            },
+            {
+              id: 'check-in-script',
+              title: 'Check-in Process',
+              content: 'Thank you for choosing Nova Hotels X. I have your reservation here for [nights] nights. May I please see your ID and the credit card used for booking? I will also need to place a $50 incidental hold that will be released upon checkout.',
+              createdAt: new Date(),
+              updatedAt: new Date()
+            }
+          ],
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          id: 'housekeeping',
+          name: 'Housekeeping Standards',
+          entries: [
+            {
+              id: 'room-cleaning-checklist',
+              title: 'Nova Room Standards',
+              content: 'All Nova Hotels X rooms must meet our 15-point inspection: Fresh linens, vacuumed carpets, sanitized bathroom, restocked amenities, temperature set to 72°F, curtains properly arranged, welcome amenities placed, and Nova signature touch completed.',
               createdAt: new Date(),
               updatedAt: new Date()
             }
@@ -27,9 +49,25 @@ const DEFAULT_DATA: HandbookData = {
       updatedAt: new Date()
     },
     {
-      id: 'training-host',
-      name: 'Training Host',
-      categories: [],
+      id: 'training-protocols',
+      name: 'Training Protocols',
+      categories: [
+        {
+          id: 'new-employee',
+          name: 'New Employee Orientation',
+          entries: [
+            {
+              id: 'nova-values',
+              title: 'Nova Hotels X Core Values',
+              content: 'Welcome to Nova Hotels X! Our core values are: Excellence in Service, Attention to Detail, Guest-Centric Approach, Team Collaboration, and Continuous Improvement. These guide every interaction and decision.',
+              createdAt: new Date(),
+              updatedAt: new Date()
+            }
+          ],
+          createdAt: new Date(),
+          updatedAt: new Date()
+        }
+      ],
       createdAt: new Date(),
       updatedAt: new Date()
     }
