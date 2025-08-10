@@ -61,25 +61,37 @@ export function AddEditEntryDialog({
         <div className="space-y-4">
           <div>
             <Label htmlFor="entry-title">Title</Label>
-            <Input
-              id="entry-title"
-              value={entryTitle}
-              onChange={(e) => setEntryTitle(e.target.value)}
-              placeholder="Enter entry title..."
-              className="mt-1"
-            />
+            <div className="mt-1 space-y-2">
+              <Input
+                id="entry-title"
+                value={entryTitle}
+                onChange={(e) => setEntryTitle(e.target.value)}
+                placeholder="Enter entry title..."
+              />
+              <div className="bg-muted/50 border border-border rounded-md p-3">
+                <p className="text-xs text-muted-foreground">
+                  💡 <strong>Title:</strong> Give your entry a clear, descriptive name (e.g., "Welcome Message", "Check-in Process")
+                </p>
+              </div>
+            </div>
           </div>
           
           <div>
             <Label htmlFor="entry-content">Content</Label>
-            <Textarea
-              id="entry-content"
-              value={entryContent}
-              onChange={(e) => setEntryContent(e.target.value)}
-              placeholder="Enter the text that will be copied to clipboard..."
-              rows={6}
-              className="mt-1"
-            />
+            <div className="mt-1 space-y-2">
+              <Textarea
+                id="entry-content"
+                value={entryContent}
+                onChange={(e) => setEntryContent(e.target.value)}
+                placeholder="Enter the text that will be copied to clipboard..."
+                rows={6}
+              />
+              <div className="bg-muted/50 border border-border rounded-md p-3">
+                <p className="text-xs text-muted-foreground">
+                  ✨ <strong>Content:</strong> This text will be copied to your clipboard when you click the entry. Perfect for templates, scripts, or quick responses!
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 

@@ -67,69 +67,134 @@ export function CategoryCard({
       </CardHeader>
 
       <CardContent className="pt-0">
-        <div className="space-y-3">
-          {category.entries.map((entry) => (
-            <div
-              key={entry.id}
-              className="card-entry group relative"
-              onClick={() => handleCopyToClipboard(entry.content, entry.id)}
-            >
-              <div className="flex items-start justify-between">
-                <div className="flex-1 min-w-0">
-                  <h4 className="font-medium text-foreground mb-1 truncate">
-                    {entry.title}
-                  </h4>
-                  <p className="text-sm text-muted-foreground line-clamp-2">
-                    {entry.content}
-                  </p>
-                </div>
-                
-                <div className="flex items-center space-x-1 ml-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                  {copiedEntryId === entry.id ? (
-                    <div className="flex items-center text-green-600 text-xs font-medium">
-                      <Check className="w-3 h-3 mr-1" />
-                      Copied!
+        {category.entries.length > 6 ? (
+          // Horizontal scroll layout for many entries
+          <div className="mb-4">
+            <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+              {category.entries.map((entry) => (
+                <div
+                  key={entry.id}
+                  className="card-entry group relative min-w-[280px] flex-shrink-0"
+                  onClick={() => handleCopyToClipboard(entry.content, entry.id)}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-medium text-foreground mb-1 truncate">
+                        {entry.title}
+                      </h4>
+                      <p className="text-sm text-muted-foreground line-clamp-2">
+                        {entry.content}
+                      </p>
                     </div>
-                  ) : (
-                    <Copy className="w-4 h-4 text-primary" />
-                  )}
+                    
+                    <div className="flex items-center space-x-1 ml-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                      {copiedEntryId === entry.id ? (
+                        <div className="flex items-center text-green-600 text-xs font-medium">
+                          <Check className="w-3 h-3 mr-1" />
+                          Copied!
+                        </div>
+                      ) : (
+                        <Copy className="w-4 h-4 text-primary" />
+                      )}
+                      
+                      <Button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setEditingEntry(entry);
+                        }}
+                        size="sm"
+                        variant="ghost"
+                        className="h-6 w-6 p-0"
+                      >
+                        <Edit2 className="w-3 h-3" />
+                      </Button>
+                      
+                      <Button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onDeleteEntry(entry.id);
+                        }}
+                        size="sm"
+                        variant="ghost"
+                        className="h-6 w-6 p-0 text-destructive hover:text-destructive"
+                      >
+                        <Trash2 className="w-3 h-3" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground text-center">
+              ← Scroll horizontally to see all entries →
+            </p>
+          </div>
+        ) : (
+          // Vertical layout for fewer entries
+          <div className="space-y-3">
+            {category.entries.map((entry) => (
+              <div
+                key={entry.id}
+                className="card-entry group relative"
+                onClick={() => handleCopyToClipboard(entry.content, entry.id)}
+              >
+                <div className="flex items-start justify-between">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-medium text-foreground mb-1 truncate">
+                      {entry.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground line-clamp-2">
+                      {entry.content}
+                    </p>
+                  </div>
                   
-                  <Button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setEditingEntry(entry);
-                    }}
-                    size="sm"
-                    variant="ghost"
-                    className="h-6 w-6 p-0"
-                  >
-                    <Edit2 className="w-3 h-3" />
-                  </Button>
-                  
-                  <Button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onDeleteEntry(entry.id);
-                    }}
-                    size="sm"
-                    variant="ghost"
-                    className="h-6 w-6 p-0 text-destructive hover:text-destructive"
-                  >
-                    <Trash2 className="w-3 h-3" />
-                  </Button>
+                  <div className="flex items-center space-x-1 ml-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    {copiedEntryId === entry.id ? (
+                      <div className="flex items-center text-green-600 text-xs font-medium">
+                        <Check className="w-3 h-3 mr-1" />
+                        Copied!
+                      </div>
+                    ) : (
+                      <Copy className="w-4 h-4 text-primary" />
+                    )}
+                    
+                    <Button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setEditingEntry(entry);
+                      }}
+                      size="sm"
+                      variant="ghost"
+                      className="h-6 w-6 p-0"
+                    >
+                      <Edit2 className="w-3 h-3" />
+                    </Button>
+                    
+                    <Button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onDeleteEntry(entry.id);
+                      }}
+                      size="sm"
+                      variant="ghost"
+                      className="h-6 w-6 p-0 text-destructive hover:text-destructive"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-          
-          {category.entries.length === 0 && (
-            <div className="text-center py-8 text-muted-foreground">
-              <FileText className="w-12 h-12 mx-auto mb-3 opacity-50" />
-              <p>No entries yet</p>
-              <p className="text-sm">Click "Add Entry" to get started</p>
-            </div>
-          )}
-        </div>
+            ))}
+          </div>
+        )}
+        
+        {category.entries.length === 0 && (
+          <div className="text-center py-8 text-muted-foreground">
+            <FileText className="w-12 h-12 mx-auto mb-3 opacity-50" />
+            <p>No entries yet</p>
+            <p className="text-sm">Click "Add Entry" to get started</p>
+          </div>
+        )}
 
         <Button
           onClick={() => setIsAddingEntry(true)}

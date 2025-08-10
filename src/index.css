@@ -150,4 +150,14 @@ Red (#b22222) theme with Cabin font - All colors MUST be HSL.
   .slide-up {
     @apply animate-in slide-in-from-bottom-4 duration-300;
   }
+  
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
