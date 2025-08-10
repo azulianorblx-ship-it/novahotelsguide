@@ -2,6 +2,7 @@ export interface TextEntry {
   id: string;
   title: string;
   content: string;
+  type: 'copyable' | 'info';
   createdAt: Date;
   updatedAt: Date;
 }
