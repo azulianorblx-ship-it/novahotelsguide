@@ -11,8 +11,8 @@ interface HandbookPageProps {
   onAddCategory: (name: string) => void;
   onDeleteCategory: (categoryId: string) => void;
   onUpdateCategory: (categoryId: string, name: string) => void;
-  onAddEntry: (categoryId: string, title: string, content: string, type: 'copyable' | 'info') => void;
-  onUpdateEntry: (categoryId: string, entryId: string, title: string, content: string, type: 'copyable' | 'info') => void;
+  onAddEntry: (categoryId: string, title: string, content: string) => void;
+  onUpdateEntry: (categoryId: string, entryId: string, title: string, content: string) => void;
   onDeleteEntry: (categoryId: string, entryId: string) => void;
   onUpdatePage: (name: string) => void;
   onDeletePage: () => void;
@@ -72,8 +72,8 @@ export function HandbookPage({
               <CategoryCard
                 key={category.id}
                 category={category}
-                onAddEntry={(title, content, type) => onAddEntry(category.id, title, content, type)}
-                onUpdateEntry={(entryId, title, content, type) => onUpdateEntry(category.id, entryId, title, content, type)}
+                onAddEntry={(title, content) => onAddEntry(category.id, title, content)}
+                onUpdateEntry={(entryId, title, content) => onUpdateEntry(category.id, entryId, title, content)}
                 onDeleteEntry={(entryId) => onDeleteEntry(category.id, entryId)}
                 onUpdateCategory={(name) => onUpdateCategory(category.id, name)}
                 onDeleteCategory={() => onDeleteCategory(category.id)}

@@ -15,7 +15,6 @@ const DEFAULT_DATA: HandbookData = {
               id: 'welcome-greeting',
               title: 'Nova Welcome Greeting',
               content: 'Good [morning/afternoon/evening], welcome to Nova Hotels X! My name is [Your Name], how may I provide you with exceptional service today?',
-              type: 'copyable' as const,
               createdAt: new Date(),
               updatedAt: new Date()
             },
@@ -23,7 +22,6 @@ const DEFAULT_DATA: HandbookData = {
               id: 'check-in-script',
               title: 'Check-in Process',
               content: 'Thank you for choosing Nova Hotels X. I have your reservation here for [nights] nights. May I please see your ID and the credit card used for booking? I will also need to place a $50 incidental hold that will be released upon checkout.',
-              type: 'copyable' as const,
               createdAt: new Date(),
               updatedAt: new Date()
             }
@@ -39,7 +37,6 @@ const DEFAULT_DATA: HandbookData = {
               id: 'room-cleaning-checklist',
               title: 'Nova Room Standards',
               content: 'All Nova Hotels X rooms must meet our 15-point inspection: Fresh linens, vacuumed carpets, sanitized bathroom, restocked amenities, temperature set to 72°F, curtains properly arranged, welcome amenities placed, and Nova signature touch completed.',
-              type: 'info' as const,
               createdAt: new Date(),
               updatedAt: new Date()
             }
@@ -63,7 +60,6 @@ const DEFAULT_DATA: HandbookData = {
               id: 'nova-values',
               title: 'Nova Hotels X Core Values',
               content: 'Welcome to Nova Hotels X! Our core values are: Excellence in Service, Attention to Detail, Guest-Centric Approach, Team Collaboration, and Continuous Improvement. These guide every interaction and decision.',
-              type: 'info' as const,
               createdAt: new Date(),
               updatedAt: new Date()
             }
@@ -142,12 +138,11 @@ export function useHandbook() {
     }));
   };
 
-  const addEntry = (pageId: string, categoryId: string, title: string, content: string, type: 'copyable' | 'info' = 'copyable') => {
+  const addEntry = (pageId: string, categoryId: string, title: string, content: string) => {
     const newEntry: TextEntry = {
       id: `${categoryId}-${Date.now()}`,
       title,
       content,
-      type,
       createdAt: new Date(),
       updatedAt: new Date()
     };
@@ -171,7 +166,7 @@ export function useHandbook() {
     }));
   };
 
-  const updateEntry = (pageId: string, categoryId: string, entryId: string, title: string, content: string, type: 'copyable' | 'info' = 'copyable') => {
+  const updateEntry = (pageId: string, categoryId: string, entryId: string, title: string, content: string) => {
     setHandbookData(prev => ({
       ...prev,
       pages: prev.pages.map(page => 
@@ -184,7 +179,7 @@ export function useHandbook() {
                       ...cat,
                       entries: cat.entries.map(entry => 
                         entry.id === entryId 
-                          ? { ...entry, title, content, type, updatedAt: new Date() }
+                          ? { ...entry, title, content, updatedAt: new Date() }
                           : entry
                       ),
                       updatedAt: new Date()
